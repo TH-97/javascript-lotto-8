@@ -5,5 +5,7 @@ import { outputPurchaseAmountMessge } from "../features/output/index.js";
 export default async function lottoController() {
   outputPurchaseAmountMessge();
   const input = await inputPurchaseAmount();
-  const purchaseAmount = new PurchaseAmount(input).getPurchaseAmount();
+  const purchasedLottoCount = new PurchaseAmount(
+    input
+  ).getPurchasedLottoCount();
 }
