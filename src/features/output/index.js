@@ -1,3 +1,3 @@
-import { outputPurchaseAmountMessge } from "./outputGuideMessge/outputGuideMessge";
+import { outputPurchaseAmountMessge } from "./outputGuideMessge/outputGuideMessge.js";
 
 export { outputPurchaseAmountMessge };
