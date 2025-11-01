@@ -1,6 +1,11 @@
 import {
   outputPurchaseAmountMessge,
   outputPurchaseCount,
+  outputRandomLottoNumbers,
 } from "./outputGuideMessge/outputGuideMessge.js";
 
-export { outputPurchaseAmountMessge, outputPurchaseCount };
+export {
+  outputPurchaseAmountMessge,
+  outputPurchaseCount,
+  outputRandomLottoNumbers,
+};
