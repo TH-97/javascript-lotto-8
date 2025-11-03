@@ -10,7 +10,7 @@ export function outputPurchaseCount(count) {
 
 export function outputRandomLottoNumbers(array) {
   array.forEach((numberArray) => {
-    Console.print(numberArray);
+    Console.print(`[${numberArray.join(", ")}]`);
   });
 }
 
@@ -27,4 +27,7 @@ export function outputMatchMessage(matchObject) {
 5개 일치 (1,500,000원) - ${matchObject.matchFive}개
 5개 일치, 보너스 볼 일치 (30,000,000원) - ${matchObject.matchFourAndBonus}개
 6개 일치 (2,000,000,000원) - ${matchObject.matchSix}개`);
+}
+export function outputProfit(calculatedProfit) {
+  Console.print(`총 수익률은 ${calculatedProfit}입니다.`);
 }

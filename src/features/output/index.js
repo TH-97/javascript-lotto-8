@@ -5,6 +5,7 @@ import {
   outputWinningNumberMessage,
   outputBounsNumberMessage,
   outputMatchMessage,
+  outputProfit,
 } from "./outputGuideMessge/outputGuideMessge.js";
 
 export {
@@ -14,4 +15,5 @@ export {
   outputWinningNumberMessage,
   outputBounsNumberMessage,
   outputMatchMessage,
+  outputProfit,
 };
