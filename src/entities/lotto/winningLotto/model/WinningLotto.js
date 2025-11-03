@@ -1,3 +1,5 @@
+import { ERROR_MESSAGE } from "../../../../shard/index.js";
+
 export class WinningLotto {
   #winningNumber;
   #bonusNumber;
@@ -18,14 +20,13 @@ export class WinningLotto {
 
   #validateWinningNumberMatchBounsNumber(lotto, bonusNumber) {
     if (lotto.some((number) => Number(number) === Number(bonusNumber)))
-      throw new Error(
-        "[ERROR] 보너스 넘버는 당첨 번호와 같은 숫자를 가질 수 없습니다"
-      );
+      throw new Error(ERROR_MESSAGE.NUMBER_DUPLICATE);
   }
   #validateBonusNumber(bonusNumber) {
-    if (isNaN(bonusNumber)) throw new Error("[ERROR] 숫자만 입력 가능합니다");
+    if (bonusNumber.length === 0) throw new Error(ERROR_MESSAGE.EMPTY_INPUT);
+    if (isNaN(bonusNumber)) throw new Error(ERROR_MESSAGE.NUMBER_NOT_NUMBER);
     if (Number(bonusNumber) < 1 || Number(bonusNumber) > 45)
-      throw new Error("[ERROR] 1 ~ 45 숫자만 입력 가능합니다");
+      throw new Error(ERROR_MESSAGE.NUMBER_OUT_OF_RANGE);
   }
 
   #howManyMatches(lottoNumber) {

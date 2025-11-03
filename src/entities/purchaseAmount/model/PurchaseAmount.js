@@ -1,3 +1,5 @@
+import { ERROR_MESSAGE } from "../../../shard/index.js";
+
 export class PurchaseAmount {
   #purchaseAmount;
 
@@ -7,8 +9,9 @@ export class PurchaseAmount {
   }
 
   #validate(purchaseAmount) {
+    if (purchaseAmount.length === 0) throw new Error(ERROR_MESSAGE.EMPTY_INPUT);
     if (Number(purchaseAmount) % 1000 !== 0)
-      throw new Error("[ERROR] 1000 단위 여야 합니다");
+      throw new Error(ERROR_MESSAGE.THOUSAND_UNIT_ONLY);
   }
 
   getPurchasedLottoCount() {

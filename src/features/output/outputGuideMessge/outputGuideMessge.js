@@ -1,11 +1,12 @@
 import { Console } from "@woowacourse/mission-utils";
+import { MESSAGE } from "../../../shard/index.js";
 
 export function outputPurchaseAmountMessage() {
-  Console.print("구입금액을 입력해 주세요.");
+  Console.print(MESSAGE.PURCHASE.AMOUNT);
 }
 
 export function outputPurchaseCount(count) {
-  Console.print(`${count}개를 구매했습니다.`);
+  Console.print(MESSAGE.PURCHASE.COUNT(count));
 }
 
 export function outputRandomLottoNumbers(array) {
@@ -15,19 +16,23 @@ export function outputRandomLottoNumbers(array) {
 }
 
 export function outputWinningNumberMessage() {
-  Console.print("당첨 번호를 입력해 주세요.");
+  Console.print(MESSAGE.LOTTO.WINNING_NUMBER);
 }
-export function outputBounsNumberMessage() {
-  Console.print("보너스 번호를 입력해 주세요.");
+
+export function outputBonusNumberMessage() {
+  Console.print(MESSAGE.LOTTO.BONUS_NUMBER);
 }
+
 export function outputMatchMessage(matchObject) {
-  Console.print(`
-3개 일치 (5,000원) - ${matchObject.matchThree}개
-4개 일치 (50,000원) - ${matchObject.matchFour}개
-5개 일치 (1,500,000원) - ${matchObject.matchFive}개
-5개 일치, 보너스 볼 일치 (30,000,000원) - ${matchObject.matchFourAndBonus}개
-6개 일치 (2,000,000,000원) - ${matchObject.matchSix}개`);
+  Console.print(
+    `${MESSAGE.LOTTO.MATCH.MATCH_THREE} - ${matchObject.matchThree}개\n` +
+      `${MESSAGE.LOTTO.MATCH.MATCH_FOUR} - ${matchObject.matchFour}개\n` +
+      `${MESSAGE.LOTTO.MATCH.MATCH_FIVE} - ${matchObject.matchFive}개\n` +
+      `${MESSAGE.LOTTO.MATCH.MATCH_FIVE_BONUS} - ${matchObject.matchFourAndBonus}개\n` +
+      `${MESSAGE.LOTTO.MATCH.MATCH_SIX} - ${matchObject.matchSix}개`
+  );
 }
+
 export function outputProfit(calculatedProfit) {
-  Console.print(`총 수익률은 ${calculatedProfit}입니다.`);
+  Console.print(MESSAGE.PROFIT.TOTAL(calculatedProfit));
 }

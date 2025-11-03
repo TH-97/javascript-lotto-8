@@ -1,3 +1,5 @@
+import { ERROR_MESSAGE } from "../../../../shard/index.js";
+
 class Lotto {
   #numbers;
 
@@ -8,16 +10,15 @@ class Lotto {
 
   #validate(numbers) {
     const setWinningNumber = new Set(numbers);
-
-    if (numbers.length !== 6)
-      throw new Error("[ERROR] 로또 번호는 6개여야 합니다.");
+    if (numbers.length === 0) throw new Error(ERROR_MESSAGE.EMPTY_INPUT);
+    if (numbers.length !== 6) throw new Error(ERROR_MESSAGE.LOTTO_NUMBER_COUNT);
     numbers.forEach((number) => {
-      if (isNaN(number)) throw new Error("[ERROR] 숫자만 입력 가능합니다");
+      if (isNaN(number)) throw new Error(ERROR_MESSAGE.NUMBER_NOT_NUMBER);
       if (Number(number) < 1 || Number(number) > 45)
-        throw new Error("[ERROR] 1 ~ 45 숫자만 입력 가능합니다");
+        throw new Error(ERROR_MESSAGE.NUMBER_OUT_OF_RANGE);
     });
     if (numbers.length !== setWinningNumber.size)
-      throw new Error("[ERROR] 중복된 숫자는 당첨번호가 될 수 없습니다");
+      throw new Error(ERROR_MESSAGE.DUPLICATE_LOTTO_NUMBER);
   }
 
   // TODO: 추가 기능 구현
