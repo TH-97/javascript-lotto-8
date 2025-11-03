@@ -9,7 +9,7 @@ import {
   outputPurchaseCount,
   outputRandomLottoNumbers,
   outputWinningNumberMessage,
-  outputBounsNumberMessage,
+  outputBonusNumberMessage,
   outputMatchMessage,
   outputProfit,
 } from "../features/output/index.js";
@@ -51,7 +51,7 @@ export default async function lottoController() {
   async function getWinningNumbers() {
     outputWinningNumberMessage();
     const input = await inputValue();
-    outputBounsNumberMessage();
+    outputBonusNumberMessage();
     const bonusInput = await inputValue();
     const numbers = stringSplitter(input);
     return { numbers: new Lotto(numbers).getNumbers(), bonus: bonusInput };
