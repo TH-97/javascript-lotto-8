@@ -1,7 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
 import { PurchaseAmount } from "../entities/purchaseAmount/index.js";
 import { RandomLottoNumberArray } from "../entities/randomLottoNumberArray/index.js";
-import { WinningLotto } from "../entities/lotto/index.js";
+import { WinningLotto, Lotto } from "../entities/lotto/index.js";
 import { calculateProfit } from "../features/calculate/index.js";
 import { inputValue } from "../features/input/index.js";
 import {
@@ -14,43 +14,56 @@ import {
   outputProfit,
 } from "../features/output/index.js";
 import { stringSplitter } from "../features/splitter/index.js";
-import Lotto from "../entities/lotto/lotto/model/Lotto.js";
 
 export default async function lottoController() {
   try {
-    outputPurchaseAmountMessage();
+    const { lottoCount, purchaseAmount } = await getPurchaseAmount();
 
-    const inputPurchaseAmount = await inputValue();
+    outputPurchaseCount(lottoCount);
 
-    const purchasedLottoCount = new PurchaseAmount(
-      inputPurchaseAmount
-    ).getPurchasedLottoCount();
-
-    outputPurchaseCount(purchasedLottoCount);
-
-    const randomLottoArray = new RandomLottoNumberArray(
-      purchasedLottoCount
-    ).getRandomLottoNumberArray();
+    const randomLottoArray = generateRandomLottos(lottoCount);
 
     outputRandomLottoNumbers(randomLottoArray);
 
-    outputWinningNumberMessage();
-    const inputWinningNumber = await inputValue();
+    const { numbers, bonus } = await getWinningNumbers();
 
-    outputBounsNumberMessage();
-    const inputBounsNumber = await inputValue();
-
-    const lottoArray = stringSplitter(inputWinningNumber);
-    const lotto = await new Lotto(lottoArray).getNumbers();
-
-    console.log(lotto);
-
-    const winnginLotto = new WinningLotto(lotto, inputBounsNumber);
-    const matchObject = winnginLotto.getMatchNumbs(randomLottoArray);
-    outputMatchMessage(matchObject);
-    const calculatedProfit = calculateProfit(matchObject, inputPurchaseAmount);
-    outputProfit(calculatedProfit);
+    checkWinning(randomLottoArray, numbers, bonus, purchaseAmount);
   } catch (error) {
     Console.print(error.message);
+  }
+  async function getPurchaseAmount() {
+    outputPurchaseAmountMessage();
+    const input = await inputValue();
+    const lottoCount = new PurchaseAmount(input).getPurchasedLottoCount();
+    return {
+      lottoCount: lottoCount,
+      purchaseAmount: Number(input),
+    };
+  }
+
+  function generateRandomLottos(lottoCount) {
+    const randomLottos = new RandomLottoNumberArray(
+      lottoCount
+    ).getRandomLottoNumberArray();
+    return randomLottos;
+  }
+
+  async function getWinningNumbers() {
+    outputWinningNumberMessage();
+    const input = await inputValue();
+    outputBounsNumberMessage();
+    const bonusInput = await inputValue();
+    const numbers = stringSplitter(input);
+    return { numbers: new Lotto(numbers).getNumbers(), bonus: bonusInput };
+  }
+
+  function checkWinning(randomLottos, numbers, bonus, purchaseAmount) {
+    const matchObject = new WinningLotto(numbers, bonus).getMatchNumbs(
+      randomLottos
+    );
+
+    outputMatchMessage(matchObject);
+    const profit = calculateProfit(matchObject, purchaseAmount);
+    outputProfit(profit);
   }
 }
