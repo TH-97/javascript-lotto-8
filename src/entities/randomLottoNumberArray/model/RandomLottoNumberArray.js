@@ -9,7 +9,7 @@ export class RandomLottoNumberArray {
   #createRandomLottoNumbers(count) {
     for (let i = 0; i < count; i++) {
       this.#randomLottoNumberArray.push(
-        Random.pickUniqueNumbersInRange(1, 45, 6)
+        Random.pickUniqueNumbersInRange(1, 45, 6).sort((a, b) => a - b)
       );
     }
   }
