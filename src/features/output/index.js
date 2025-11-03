@@ -1,15 +1,15 @@
 import {
-  outputPurchaseAmountMessge,
+  outputPurchaseAmountMessage,
   outputPurchaseCount,
   outputRandomLottoNumbers,
-  outputWinningNumberMessge,
-  outputBounsNumberMessge,
+  outputWinningNumberMessage,
+  outputBounsNumberMessage,
 } from "./outputGuideMessge/outputGuideMessge.js";
 
 export {
-  outputPurchaseAmountMessge,
+  outputPurchaseAmountMessage,
   outputPurchaseCount,
   outputRandomLottoNumbers,
-  outputWinningNumberMessge,
-  outputBounsNumberMessge,
+  outputWinningNumberMessage,
+  outputBounsNumberMessage,
 };

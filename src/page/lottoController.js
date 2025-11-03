@@ -3,15 +3,15 @@ import { RandomLottoNumberArray } from "../entities/randomLottoNumberArray/index
 import { WinningLotto } from "../entities/winningLotto/index.js";
 import { inputValue } from "../features/input/index.js";
 import {
-  outputPurchaseAmountMessge,
+  outputPurchaseAmountMessage,
   outputPurchaseCount,
   outputRandomLottoNumbers,
-  outputWinningNumberMessge,
-  outputBounsNumberMessge,
+  outputWinningNumberMessage,
+  outputBounsNumberMessage,
 } from "../features/output/index.js";
 
 export default async function lottoController() {
-  outputPurchaseAmountMessge();
+  outputPurchaseAmountMessage();
 
   const input = await inputValue();
 
@@ -27,12 +27,11 @@ export default async function lottoController() {
 
   outputRandomLottoNumbers(randomLottoArray);
 
-  outputWinningNumberMessge();
+  outputWinningNumberMessage();
   const inputWinningNumber = await inputValue();
-  outputBounsNumberMessge();
+  outputBounsNumberMessage();
   const inputBounsNumber = await inputValue();
 
   const winnginLotto = new WinningLotto(inputWinningNumber, inputBounsNumber);
   const matchObject = winnginLotto.getMatchNumbs(randomLottoArray);
-  console.log(matchObject);
 }
