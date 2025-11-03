@@ -8,6 +8,7 @@ import {
   outputRandomLottoNumbers,
   outputWinningNumberMessage,
   outputBounsNumberMessage,
+  outputMatchMessage,
 } from "../features/output/index.js";
 
 export default async function lottoController() {
@@ -34,4 +35,5 @@ export default async function lottoController() {
 
   const winnginLotto = new WinningLotto(inputWinningNumber, inputBounsNumber);
   const matchObject = winnginLotto.getMatchNumbs(randomLottoArray);
+  outputMatchMessage(matchObject);
 }

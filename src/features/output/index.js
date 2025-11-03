@@ -4,6 +4,7 @@ import {
   outputRandomLottoNumbers,
   outputWinningNumberMessage,
   outputBounsNumberMessage,
+  outputMatchMessage,
 } from "./outputGuideMessge/outputGuideMessge.js";
 
 export {
@@ -12,4 +13,5 @@ export {
   outputRandomLottoNumbers,
   outputWinningNumberMessage,
   outputBounsNumberMessage,
+  outputMatchMessage,
 };
