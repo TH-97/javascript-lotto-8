@@ -3,7 +3,7 @@ import {
   outputPurchaseCount,
   outputRandomLottoNumbers,
   outputWinningNumberMessage,
-  outputBounsNumberMessage,
+  outputBonusNumberMessage,
   outputMatchMessage,
   outputProfit,
 } from "./outputGuideMessge/outputGuideMessge.js";
@@ -13,7 +13,7 @@ export {
   outputPurchaseCount,
   outputRandomLottoNumbers,
   outputWinningNumberMessage,
-  outputBounsNumberMessage,
+  outputBonusNumberMessage,
   outputMatchMessage,
   outputProfit,
 };
