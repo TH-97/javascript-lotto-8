@@ -6,7 +6,7 @@ export function outputPurchaseAmountMessage() {
 }
 
 export function outputPurchaseCount(count) {
-  Console.print(MESSAGE.PURCHASE.COUNT(count));
+  Console.print(`\n${MESSAGE.PURCHASE.COUNT(count)}`);
 }
 
 export function outputRandomLottoNumbers(array) {
@@ -16,16 +16,18 @@ export function outputRandomLottoNumbers(array) {
 }
 
 export function outputWinningNumberMessage() {
-  Console.print(MESSAGE.LOTTO.WINNING_NUMBER);
+  Console.print(`\n${MESSAGE.LOTTO.WINNING_NUMBER}`);
 }
 
 export function outputBonusNumberMessage() {
-  Console.print(MESSAGE.LOTTO.BONUS_NUMBER);
+  Console.print(`\n${MESSAGE.LOTTO.BONUS_NUMBER}`);
 }
 
 export function outputMatchMessage(matchObject) {
   Console.print(
-    `${MESSAGE.LOTTO.MATCH.MATCH_THREE} - ${matchObject.matchThree}개\n` +
+    `\n당첨 통계\n` +
+      `---\n` +
+      `${MESSAGE.LOTTO.MATCH.MATCH_THREE} - ${matchObject.matchThree}개\n` +
       `${MESSAGE.LOTTO.MATCH.MATCH_FOUR} - ${matchObject.matchFour}개\n` +
       `${MESSAGE.LOTTO.MATCH.MATCH_FIVE} - ${matchObject.matchFive}개\n` +
       `${MESSAGE.LOTTO.MATCH.MATCH_FIVE_BONUS} - ${matchObject.matchFourAndBonus}개\n` +
