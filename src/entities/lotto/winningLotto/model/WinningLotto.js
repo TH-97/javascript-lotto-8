@@ -9,39 +9,18 @@ export class WinningLotto {
     matchSix: 0,
   };
 
-  constructor(winningNumbers, bonusNumber) {
-    this.#validateWinningNumber(winningNumbers);
+  constructor(lotto, bonusNumber) {
     this.#validateBonusNumber(bonusNumber);
-    this.#validateWinningNumberMatchBounsNumber(winningNumbers, bonusNumber);
-    this.#winningNumber = winningNumbers.split(",");
+    this.#validateWinningNumberMatchBounsNumber(lotto, bonusNumber);
+    this.#winningNumber = lotto;
     this.#bonusNumber = bonusNumber;
   }
 
-  #validateWinningNumberMatchBounsNumber(winningNumber, bonusNumber) {
-    const parseWinningNumber = winningNumber.split(",");
-
-    if (
-      parseWinningNumber.some(
-        (number) => Number(number) === Number(bonusNumber)
-      )
-    )
+  #validateWinningNumberMatchBounsNumber(lotto, bonusNumber) {
+    if (lotto.some((number) => Number(number) === Number(bonusNumber)))
       throw new Error(
         "[ERROR] 보너스 넘버는 당첨 번호와 같은 숫자를 가질 수 없습니다"
       );
-  }
-  #validateWinningNumber(winningNumber) {
-    const parseWinningNumber = winningNumber.split(",");
-    const setWinningNumber = new Set(parseWinningNumber);
-
-    if (parseWinningNumber.length !== 6)
-      throw new Error("[ERROR] 쉼표(,)를 구분자로서 6개의 숫자만 입력 가능");
-    parseWinningNumber.forEach((number) => {
-      if (isNaN(number)) throw new Error("[ERROR] 숫자만 입력 가능합니다");
-      if (Number(number) < 1 || Number(number) > 45)
-        throw new Error("[ERROR] 1 ~ 45 숫자만 입력 가능합니다");
-    });
-    if (parseWinningNumber.length !== setWinningNumber.size)
-      throw new Error("[ERROR] 중복된 숫자는 당첨번호가 될 수 없습니다");
   }
   #validateBonusNumber(bonusNumber) {
     if (isNaN(bonusNumber)) throw new Error("[ERROR] 숫자만 입력 가능합니다");
@@ -61,7 +40,6 @@ export class WinningLotto {
   getMatchNumbs(array) {
     array.forEach((array) => {
       const matchInfo = this.#howManyMatches(array);
-      console.log(matchInfo);
       this.#upCount(matchInfo);
     });
     return this.#match;
