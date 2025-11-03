@@ -1,5 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
 
-export function inputPurchaseAmount() {
+export function inputValue() {
   return Console.readLineAsync("");
 }

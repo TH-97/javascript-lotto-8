@@ -1,3 +1,3 @@
-import { inputPurchaseAmount } from "./input/input.js";
+import { inputValue } from "./input/input.js";
 
-export { inputPurchaseAmount };
+export { inputValue };
