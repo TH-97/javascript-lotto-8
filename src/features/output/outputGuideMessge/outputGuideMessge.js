@@ -13,3 +13,10 @@ export function outputRandomLottoNumbers(array) {
     Console.print(numberArray);
   });
 }
+
+export function outputWinningNumberMessge() {
+  Console.print("당첨 번호를 입력해 주세요.");
+}
+export function outputBounsNumberMessge() {
+  Console.print("보너스 번호를 입력해 주세요.");
+}
